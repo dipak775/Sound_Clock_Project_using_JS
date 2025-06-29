@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+        
+        .clock {
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="clock">
+            00:00:00 AM
+        </div>
+        <audio src="./clock.mp3" id="sound"></audio>
+    </div>
+    <script>
+        setInterval(() => {
+            const time = document.querySelector('.clock');
+            const timeObj = new Date();
+            let audio = document.getElementById("sound");
+            audio.play();
+            const option ={
+                    hour : "2-digit",
+                    minute : "2-digit",
+                    second : "2-digit",
+                    hour12 : true
+            }
+            time.innerHTML = timeObj.toLocaleTimeString('en-US', option);
+            
+        }, 1000);
+    </script>
+</body>
+
+</html>
